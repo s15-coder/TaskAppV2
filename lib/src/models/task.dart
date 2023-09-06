@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:task_app_2/src/models/task_type.dart';
+import 'package:task_app/src/global/ui_color.dart';
+import 'package:task_app/src/models/task_type.dart';
 
 class Task {
   Task({
-    this.state = const TaskType(colorState: Colors.green, nameState: ""),
+    this.state = const TaskType(
+      colorState: UIColors.appColor,
+      nameState: "",
+    ),
     this.name = '',
     this.description = '',
     this.createdAt,

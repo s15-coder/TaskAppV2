@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/pages/new_task_page.dart';
-import 'package:task_app_2/src/widgets/app_bar_home.dart';
-import 'package:task_app_2/src/widgets/no_tasks_widget.dart';
-import 'package:task_app_2/src/widgets/task_item.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/pages/new_task_page.dart';
+import 'package:task_app/src/widgets/app_bar_home.dart';
+import 'package:task_app/src/widgets/no_tasks_widget.dart';
+import 'package:task_app/src/widgets/task_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

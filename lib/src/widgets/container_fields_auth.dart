@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app_2/src/theme/custom_color_scheme.dart';
+import 'package:task_app/src/theme/custom_color_scheme.dart';
 
 class ContainerFieldsAuth extends StatelessWidget {
   const ContainerFieldsAuth({
@@ -45,11 +45,11 @@ class ContainerFieldsAuth extends StatelessWidget {
                 onTap: onSubmit,
                 child: CircleAvatar(
                   maxRadius: 30,
+                  backgroundColor: Theme.of(context).primaryColor,
                   child: Icon(
                     submitIconData,
                     color: Colors.white,
                   ),
-                  backgroundColor: Theme.of(context).primaryColor,
                 ),
               ),
             ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/global/consts.dart';
-import 'package:task_app_2/src/helpers/parse_data.dart';
-import 'package:task_app_2/src/pages/profile_page.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/global/constants.dart';
+import 'package:task_app/src/helpers/parse_data.dart';
+import 'package:task_app/src/pages/profile_page.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AppBarHome extends StatefulWidget implements PreferredSizeWidget {
@@ -15,7 +15,7 @@ class AppBarHome extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize; // default is 56.0
 
   @override
-  _CustomAppBarState createState() => _CustomAppBarState();
+  State<AppBarHome> createState() => _CustomAppBarState();
 }
 
 class _CustomAppBarState extends State<AppBarHome> {

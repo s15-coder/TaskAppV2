@@ -2,15 +2,14 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/global/consts.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
-import 'package:task_app_2/src/helpers/parse_data.dart';
-import 'package:task_app_2/src/helpers/validations_fields.dart';
-import 'package:task_app_2/src/models/task.dart';
-import 'package:task_app_2/src/models/task_type.dart';
-import 'package:task_app_2/src/widgets/card_container.dart';
-import 'package:task_app_2/src/widgets/custom_field.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/global/constants.dart';
+import 'package:task_app/src/helpers/alerts.dart';
+import 'package:task_app/src/helpers/parse_data.dart';
+import 'package:task_app/src/helpers/validations_fields.dart';
+import 'package:task_app/src/models/task.dart';
+import 'package:task_app/src/models/task_type.dart';
+import 'package:task_app/src/widgets/custom_field.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewTaskPage extends StatefulWidget {
@@ -59,13 +58,19 @@ class _NewTaskPageState extends State<NewTaskPage> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: CardContainer(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 32,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 CustomTextField(
+                  maxLines: 1,
+                  minLines: 1,
                   hintText: AppLocalizations.of(context)!.task_name,
                   textCapitalization: TextCapitalization.sentences,
                   prefixIcon: Icons.check_circle_outline,
@@ -81,8 +86,10 @@ class _NewTaskPageState extends State<NewTaskPage> {
                     ]);
                   },
                 ),
-                const Divider(),
+                const SizedBox(height: 16),
                 CustomTextField(
+                  maxLines: 5,
+                  minLines: 1,
                   hintText: AppLocalizations.of(context)!.task_description,
                   prefixIcon: FontAwesomeIcons.tasks,
                   controller: ctrlDescriptionTask,
@@ -99,9 +106,9 @@ class _NewTaskPageState extends State<NewTaskPage> {
                     ]);
                   },
                 ),
-                const Divider(),
+                const SizedBox(height: 16),
                 const _CustomDropDownBottom(),
-                const Divider(),
+                const SizedBox(height: 16),
                 SaveUpdateButton(
                   label: edit
                       ? AppLocalizations.of(context)!.edit

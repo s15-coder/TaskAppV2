@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:task_app_2/src/models/user_hive.dart';
+import 'package:task_app/src/models/user_hive.dart';
 
 LoginResponse loginResponseFromJson(String str) =>
     LoginResponse.fromJson(json.decode(str));

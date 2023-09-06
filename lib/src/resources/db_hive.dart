@@ -1,4 +1,4 @@
-import 'package:task_app_2/src/models/user_hive.dart';
+import 'package:task_app/src/models/user_hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveDB {

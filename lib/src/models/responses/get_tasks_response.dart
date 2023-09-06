@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:task_app_2/src/models/task.dart';
+import 'package:task_app/src/models/task.dart';
 
 GetTasksResponse getTasksResponseFromJson(String str) =>
     GetTasksResponse.fromJson(json.decode(str));

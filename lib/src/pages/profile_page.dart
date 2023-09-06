@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/bloc/theme/theme_bloc.dart';
-import 'package:task_app_2/src/bloc/user/user_bloc.dart';
-import 'package:task_app_2/src/models/user_hive.dart';
-import 'package:task_app_2/src/resources/db_hive.dart';
-import 'package:task_app_2/src/widgets/card_container.dart';
-import 'package:task_app_2/src/widgets/right_banner.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/bloc/theme/theme_bloc.dart';
+import 'package:task_app/src/bloc/user/user_bloc.dart';
+import 'package:task_app/src/global/ui_color.dart';
+import 'package:task_app/src/models/user_hive.dart';
+import 'package:task_app/src/resources/db_hive.dart';
+import 'package:task_app/src/widgets/card_container.dart';
+import 'package:task_app/src/widgets/right_banner.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -35,11 +36,11 @@ class ProfilePage extends StatelessWidget {
                 builder: (context, state) {
                   return RightBanner(
                     prefixBanner: Container(
+                      margin: const EdgeInsets.only(right: 6),
                       child: const Icon(
                         FontAwesomeIcons.sun,
-                        color: Colors.green,
+                        color: UIColors.appColor,
                       ),
-                      margin: const EdgeInsets.only(right: 6),
                     ),
                     label: state.themeMode == ThemeMode.dark
                         ? AppLocalizations.of(context)!.light
@@ -109,7 +110,7 @@ class ProfileInfo extends StatelessWidget {
             Container(
               alignment: Alignment.topCenter,
               child: CircleAvatar(
-                backgroundColor: Colors.green,
+                backgroundColor: UIColors.appColor,
                 maxRadius: 50,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(50),
@@ -117,7 +118,7 @@ class ProfileInfo extends StatelessWidget {
                     height: 90,
                     width: 90,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).backgroundColor,
+                      color: Theme.of(context).colorScheme.background,
                       borderRadius: BorderRadius.circular(50),
                     ),
                     child: user.picture != null

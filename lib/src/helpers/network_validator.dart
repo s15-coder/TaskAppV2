@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
+import 'package:task_app/src/helpers/alerts.dart';
 
 class NewtworkValidator {
   static final NewtworkValidator _instance =
@@ -31,6 +31,9 @@ class NewtworkValidator {
       }
       throw '';
     } catch (_) {
+      if (!context.mounted) {
+        return false;
+      }
       showMessageAlert(
         context: context,
         title: 'Connection',

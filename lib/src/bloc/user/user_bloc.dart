@@ -2,15 +2,15 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
-import 'package:task_app_2/src/models/responses/generic_response.dart';
-import 'package:task_app_2/src/models/responses/login_response.dart';
-import 'package:task_app_2/src/pages/home_page.dart';
-import 'package:task_app_2/src/pages/login_page.dart';
-import 'package:task_app_2/src/resources/db_hive.dart';
-import 'package:task_app_2/src/resources/preferences.dart';
-import 'package:task_app_2/src/services/auth_service.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/helpers/alerts.dart';
+import 'package:task_app/src/models/responses/generic_response.dart';
+import 'package:task_app/src/models/responses/login_response.dart';
+import 'package:task_app/src/pages/home_page.dart';
+import 'package:task_app/src/pages/login_page.dart';
+import 'package:task_app/src/resources/db_hive.dart';
+import 'package:task_app/src/resources/preferences.dart';
+import 'package:task_app/src/services/auth_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'user_event.dart';
@@ -31,7 +31,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
       return googleKey.idToken;
     } catch (e) {
-      print('Google Sign In Error $e');
+      debugPrint('Google Sign In Error $e');
       return null;
     }
   }
@@ -42,6 +42,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     showLoadingAlert(context);
     String? googleToken = await _localGoogleSignIn();
     if (googleToken == null) {
+      if (!context.mounted) {
+        return;
+      }
       Navigator.pop(context);
       return;
     }
@@ -54,13 +57,22 @@ class UserBloc extends Bloc<UserEvent, UserState> {
                 msg: 'Check your network connection',
               ),
             );
+    if (!context.mounted) {
+      return;
+    }
     Navigator.pop(context);
 
     if (response.ok) {
       await HiveDB().setUser(response.user!);
       await PreferencesApp().setToken(response.token!);
+      if (!context.mounted) {
+        return;
+      }
       Navigator.pushNamedAndRemoveUntil(
-          context, HomePage.routeName, (route) => false);
+        context,
+        HomePage.routeName,
+        (route) => false,
+      );
     } else {
       switch (response.msg) {
         case "enable user":
@@ -103,11 +115,17 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             msg: 'Check your network connection',
           ),
         );
+    if (!context.mounted) {
+      return;
+    }
     Navigator.pop(context);
 
     if (response.ok) {
       await HiveDB().setUser(response.user!);
       await PreferencesApp().setToken(response.token!);
+      if (!context.mounted) {
+        return;
+      }
       Navigator.pushReplacementNamed(context, HomePage.routeName);
     } else {
       switch (response.msg) {
@@ -149,7 +167,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             msg: 'Check your network connection',
           ),
         );
-
+    if (!context.mounted) {
+      return;
+    }
     Navigator.pop(context);
     if (!response.ok) {
       switch (response.msg) {
@@ -191,7 +211,9 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       HiveDB().deleteUser(),
       PreferencesApp().removeToken(),
     ]);
-
+    if (!context.mounted) {
+      return;
+    }
     Navigator.pushNamedAndRemoveUntil(
       context,
       LoginPage.routeName,

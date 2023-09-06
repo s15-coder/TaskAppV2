@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:task_app_2/src/helpers/parse_data.dart';
-import 'package:task_app_2/src/models/task.dart';
-import 'package:task_app_2/src/pages/detail_task_page.dart';
-import 'package:task_app_2/src/theme/custom_color_scheme.dart';
+import 'package:task_app/src/helpers/parse_data.dart';
+import 'package:task_app/src/models/task.dart';
+import 'package:task_app/src/pages/detail_task_page.dart';
+import 'package:task_app/src/theme/custom_color_scheme.dart';
 
 class TaskItem extends StatelessWidget {
   const TaskItem({Key? key, required this.task}) : super(key: key);

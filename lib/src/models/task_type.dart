@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app_2/src/global/consts.dart';
+import 'package:task_app/src/global/constants.dart';
 
 class TaskType {
   final String nameState;

@@ -1,11 +1,11 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
-import 'package:task_app_2/src/models/task.dart';
-import 'package:task_app_2/src/models/task_type.dart';
-import 'package:task_app_2/src/pages/home_page.dart';
-import 'package:task_app_2/src/services/task_service.dart';
+import 'package:task_app/src/helpers/alerts.dart';
+import 'package:task_app/src/models/task.dart';
+import 'package:task_app/src/models/task_type.dart';
+import 'package:task_app/src/pages/home_page.dart';
+import 'package:task_app/src/services/task_service.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 part 'task_event.dart';
@@ -55,11 +55,15 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
   Future updateTask(Task task, BuildContext context) async {
     showLoadingAlert(context);
     final response = await _taskService.updateTask(task);
-    Navigator.pop(context);
+    if (context.mounted) {
+      Navigator.pop(context);
+    }
 
     if (response.ok) {
       add(UpdateTasksEvent(response.tasks));
-
+      if (!context.mounted) {
+        return;
+      }
       return showMessageAlert(
           context: context,
           title: AppLocalizations.of(context)!.success,
@@ -72,6 +76,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
               (route) => false,
             );
           });
+    }
+    if (!context.mounted) {
+      return;
     }
     return showMessageAlert(
       context: context,
@@ -87,7 +94,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     if (response.ok) {
       add(UpdateTasksEvent(response.tasks));
     }
-
+    if (!context.mounted) {
+      return;
+    }
     Navigator.pop(context);
     if (response.ok) {
       return showMessageAlert(
@@ -116,6 +125,9 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     final response = await _taskService.saveTask(newTask);
     if (response.ok) {
       add(UpdateTasksEvent(response.tasks));
+    }
+    if (!context.mounted) {
+      return;
     }
     Navigator.pop(context);
 

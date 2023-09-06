@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app_2/src/theme/custom_color_scheme.dart';
+import 'package:task_app/src/theme/custom_color_scheme.dart';
 
 class CardContainer extends StatelessWidget {
   const CardContainer({

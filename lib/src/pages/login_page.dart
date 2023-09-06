@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:task_app_2/src/bloc/user/user_bloc.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
-import 'package:task_app_2/src/helpers/network_validator.dart';
-import 'package:task_app_2/src/helpers/validations_fields.dart';
-import 'package:task_app_2/src/pages/register_page.dart';
-import 'package:task_app_2/src/widgets/container_fields_auth.dart';
-import 'package:task_app_2/src/widgets/auth_text_field.dart';
-import 'package:task_app_2/src/widgets/left_banner.dart';
-import 'package:task_app_2/src/widgets/painters/login_painter.dart';
+import 'package:task_app/src/bloc/user/user_bloc.dart';
+import 'package:task_app/src/helpers/alerts.dart';
+import 'package:task_app/src/helpers/network_validator.dart';
+import 'package:task_app/src/helpers/validations_fields.dart';
+import 'package:task_app/src/pages/register_page.dart';
+import 'package:task_app/src/widgets/container_fields_auth.dart';
+import 'package:task_app/src/widgets/auth_text_field.dart';
+import 'package:task_app/src/widgets/left_banner.dart';
+import 'package:task_app/src/widgets/painters/login_painter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:task_app_2/src/widgets/right_banner.dart';
+import 'package:task_app/src/widgets/right_banner.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -169,7 +169,9 @@ class FormLogin extends StatelessWidget {
       );
     }
     if (!await NewtworkValidator.checkNetworkAndAlert(context)) return;
-
+    if (!context.mounted) {
+      return;
+    }
     final userBloc = BlocProvider.of<UserBloc>(context);
     await userBloc.login(
       context: context,

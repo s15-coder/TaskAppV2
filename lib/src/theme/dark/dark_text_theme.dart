@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
+const defaultFont = TextStyle();
 TextTheme darkTextTheme = const TextTheme(
-  headline1: TextStyle(),
-  headline2: TextStyle(),
-  headline3: TextStyle(),
-  headline4: TextStyle(),
-  headline5: TextStyle(),
-  headline6: TextStyle(),
-  bodyText1: TextStyle(),
-  bodyText2: TextStyle(),
+  displayLarge: defaultFont,
+  displayMedium: defaultFont,
+  displaySmall: defaultFont,
+  headlineMedium: defaultFont,
+  headlineSmall: defaultFont,
+  titleLarge: defaultFont,
+  titleMedium: defaultFont,
+  titleSmall: defaultFont,
 );

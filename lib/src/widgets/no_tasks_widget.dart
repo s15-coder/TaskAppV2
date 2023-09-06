@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_app_2/src/theme/custom_color_scheme.dart';
+import 'package:task_app/src/theme/custom_color_scheme.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -28,7 +28,7 @@ class NoTasksWidget extends StatelessWidget {
             Text(
               AppLocalizations.of(context)!.create_new_tasks,
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ],
         ),

@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
-import 'package:task_app_2/src/global/consts.dart';
-import 'package:task_app_2/src/models/responses/get_tasks_response.dart';
-import 'package:task_app_2/src/models/responses/save_task_response.dart';
-import 'package:task_app_2/src/models/task.dart';
-import 'package:task_app_2/src/resources/preferences.dart';
+import 'package:task_app/src/global/constants.dart';
+import 'package:task_app/src/models/responses/get_tasks_response.dart';
+import 'package:task_app/src/models/responses/save_task_response.dart';
+import 'package:task_app/src/models/task.dart';
+import 'package:task_app/src/resources/preferences.dart';
 
 class TaskService {
   Future<Map<String, String>> _headers() async =>

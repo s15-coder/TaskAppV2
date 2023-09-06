@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_app_2/src/bloc/task/task_bloc.dart';
-import 'package:task_app_2/src/helpers/alerts.dart';
-import 'package:task_app_2/src/models/task.dart';
-import 'package:task_app_2/src/pages/new_task_page.dart';
-import 'package:task_app_2/src/pages/stadium_button.dart';
-import 'package:task_app_2/src/widgets/card_container.dart';
+import 'package:task_app/src/bloc/task/task_bloc.dart';
+import 'package:task_app/src/helpers/alerts.dart';
+import 'package:task_app/src/models/task.dart';
+import 'package:task_app/src/pages/new_task_page.dart';
+import 'package:task_app/src/pages/stadium_button.dart';
+import 'package:task_app/src/widgets/card_container.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DetailTaskPage extends StatelessWidget {
@@ -80,6 +80,9 @@ class DetailTaskPage extends StatelessWidget {
                 message: AppLocalizations.of(context)!.delete_task_forever,
               );
               if (delete ?? false) {
+                if (!context.mounted) {
+                  return;
+                }
                 await taskBloc.deleteTask(task.id, context);
               }
             },

@@ -10,6 +10,7 @@ import 'package:task_app/src/resources/db_hive.dart';
 import 'package:task_app/src/resources/preferences.dart';
 import 'package:task_app/src/routes/routes.dart';
 import 'package:task_app/src/theme/dark/dark_theme.dart';
+import 'package:task_app/src/theme/dark/dark_theme.dart';
 import 'package:task_app/src/theme/light/light_theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
